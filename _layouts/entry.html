@@ -1,0 +1,28 @@
+---
+layout: default
+---
+
+<article class="entry">
+  <header class="entry-header">
+    <h1>{{ page.title }}</h1>
+    <p class="entry-meta">
+      <strong>{{ page.author }}</strong>{% if page.year %}, {{ page.year }}{% endif %}
+      &middot;
+      <span class="entry-format">{{ page.format | capitalize }}</span>
+      &middot;
+      <a href="{{ '/topics/' | append: page.topic | append: '/' | relative_url }}">{{ page.topic | replace: '-', ' ' | capitalize }}</a>
+      {% if page.source %}
+        &middot;
+        <a href="{{ page.source }}" target="_blank" rel="noopener">Original &rarr;</a>
+      {% endif %}
+    </p>
+  </header>
+
+  <div class="entry-content">
+    {{ content }}
+  </div>
+
+  <footer class="entry-footer">
+    <a href="{{ '/' | relative_url }}">&larr; Back to all entries</a>
+  </footer>
+</article>

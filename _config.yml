@@ -1,0 +1,24 @@
+title: Readings
+description: Summaries, reasons to read, and key learnings from papers, books, and blog posts in software engineering.
+author: Nicolas De Giacomo
+url: https://nicodegiacomo.github.io
+baseurl: /readings
+
+collections:
+  entries:
+    output: true
+    permalink: /:collection/:name/
+
+defaults:
+  - scope:
+      path: ""
+      type: entries
+    values:
+      layout: entry
+
+markdown: kramdown
+kramdown:
+  input: GFM
+
+plugins:
+  - jekyll-seo-tag
