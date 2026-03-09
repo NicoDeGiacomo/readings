@@ -42,7 +42,7 @@ title: Home
       <td><a href="{{ entry.url | relative_url }}">{{ entry.title }}</a></td>
       <td>{{ entry.author }}</td>
       <td>{{ entry.year }}</td>
-      <td>{{ entry.format | capitalize }}</td>
+      <td><a href="{{ '/formats/' | append: entry.format | append: 's/' | relative_url }}">{{ entry.format | capitalize }}</a></td>
       <td><a href="{{ '/topics/' | append: entry.topic | append: '/' | relative_url }}">{{ entry.topic | replace: '-', ' ' | capitalize }}</a></td>
     </tr>
   {% endfor %}

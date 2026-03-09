@@ -129,12 +129,14 @@ body {
   color: var(--accent);
 }
 
-.entries-table td:last-child a {
+.entries-table td:nth-child(4) a,
+.entries-table td:nth-child(5) a {
   font-weight: 400;
   color: var(--text-secondary);
 }
 
-.entries-table td:last-child a:hover {
+.entries-table td:nth-child(4) a:hover,
+.entries-table td:nth-child(5) a:hover {
   color: var(--accent);
 }
 
