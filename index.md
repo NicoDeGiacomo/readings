@@ -25,14 +25,26 @@ title: Home
   <a href="{{ '/formats/blogs/' | relative_url }}">Blogs</a>
 </div>
 
-<ul class="entries-list">
-{% assign sorted_entries = site.entries | sort: 'year' | reverse %}
-{% for entry in sorted_entries %}
-  <li>
-    <a class="entry-link" href="{{ entry.url | relative_url }}">{{ entry.title }}</a>
-    <div class="entry-info">
-      {{ entry.author }}{% if entry.year %}, {{ entry.year }}{% endif %} &middot; {{ entry.format | capitalize }} &middot; {{ entry.topic | replace: '-', ' ' | capitalize }}
-    </div>
-  </li>
-{% endfor %}
-</ul>
+<table class="entries-table">
+  <thead>
+    <tr>
+      <th>Title</th>
+      <th>Author</th>
+      <th>Year</th>
+      <th>Format</th>
+      <th>Topic</th>
+    </tr>
+  </thead>
+  <tbody>
+  {% assign sorted_entries = site.entries | sort: 'year' | reverse %}
+  {% for entry in sorted_entries %}
+    <tr>
+      <td><a href="{{ entry.url | relative_url }}">{{ entry.title }}</a></td>
+      <td>{{ entry.author }}</td>
+      <td>{{ entry.year }}</td>
+      <td>{{ entry.format | capitalize }}</td>
+      <td><a href="{{ '/topics/' | append: entry.topic | append: '/' | relative_url }}">{{ entry.topic | replace: '-', ' ' | capitalize }}</a></td>
+    </tr>
+  {% endfor %}
+  </tbody>
+</table>
