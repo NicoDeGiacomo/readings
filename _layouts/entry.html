@@ -4,19 +4,19 @@ layout: default
 
 <article class="entry">
   <header class="entry-header">
+    <span class="entry-format-badge">{{ page.format }}</span>
     <h1>{{ page.title }}</h1>
-    <p class="entry-meta">
-      <strong>{{ page.author }}</strong>{% if page.year %}, {{ page.year }}{% endif %}
-      &middot;
-      <span class="entry-format">{{ page.format | capitalize }}</span>
-      &middot;
-      <a href="{{ '/topics/' | append: page.topic | append: '/' | relative_url }}">{{ page.topic | replace: '-', ' ' | capitalize }}</a>
+    <div class="entry-meta">
+      <span class="entry-meta-author">{{ page.author }}</span>
+      {% if page.year %}<span class="entry-meta-year">{{ page.year }}</span>{% endif %}
+      <span class="entry-meta-topic"><a href="{{ '/topics/' | append: page.topic | append: '/' | relative_url }}">{{ page.topic | replace: '-', ' ' | capitalize }}</a></span>
       {% if page.source %}
-        &middot;
-        <a href="{{ page.source }}" target="_blank" rel="noopener">Original &rarr;</a>
+        <span class="entry-meta-source"><a href="{{ page.source }}" target="_blank" rel="noopener">Original &rarr;</a></span>
       {% endif %}
-    </p>
+    </div>
   </header>
+
+  <hr class="entry-divider">
 
   <div class="entry-content">
     {{ content }}

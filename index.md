@@ -3,9 +3,8 @@ layout: default
 title: Home
 ---
 
-# Readings
-
-<p class="page-description">Summaries, reasons to read, and key learnings from papers, books, and blog posts in software engineering.</p>
+<h1 class="home-title">Readings</h1>
+<p class="home-subtitle">Summaries, reasons to read, and key learnings from papers, books, and blog posts in software engineering.</p>
 
 <div class="filters">
   <div class="filter-group">
@@ -81,8 +80,19 @@ title: Home
       var matchFormat = active.format === 'all' || row.dataset.format === active.format;
       var matchTopic = active.topic === 'all' || row.dataset.topic === active.topic;
       var show = matchFormat && matchTopic;
-      row.style.display = show ? '' : 'none';
-      if (show) visible++;
+      if (show) {
+        row.style.display = '';
+        row.style.opacity = '0';
+        row.style.transform = 'translateY(4px)';
+        requestAnimationFrame(function () {
+          row.style.transition = 'opacity 0.3s ease, transform 0.3s ease';
+          row.style.opacity = '1';
+          row.style.transform = 'translateY(0)';
+        });
+        visible++;
+      } else {
+        row.style.display = 'none';
+      }
     });
     noResults.style.display = visible === 0 ? '' : 'none';
   }
