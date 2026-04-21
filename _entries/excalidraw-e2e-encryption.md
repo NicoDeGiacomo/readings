@@ -8,14 +8,16 @@ topic: security
 source: https://blog.excalidraw.com/end-to-end-encryption/
 ---
 
-## Why read this
+## Why I read this
 
-<!-- TODO: Write 2-3 sentences on why this matters and who should read it. -->
+A look at Excalidraw's architecture. Worth reading if you're curious how a client-side-heavy app handles end-to-end encryption without a trusted backend.
 
 ## Key ideas
 
-<!-- TODO: 5-10 bullet points with core concepts in your own words. -->
+- Client-side-only E2EE: data is encrypted in the browser before it touches the server, so the server stores opaque blobs and has no ability to read user content.
+- The decryption key lives in the URL fragment (the part after `#`), which browsers do not send to the server — so sharing a link shares the key with collaborators but never with Excalidraw's backend.
+- A symmetric scheme (AES-GCM) encrypts the scene; the key is encoded as a JWK and placed in the URL fragment directly.
 
 ## Personal takeaways
 
-<!-- TODO: 1-3 things that changed how you think or work. -->
+Inspired me to build [tinycodeshare.app](https://www.tinycodeshare.app/), applying the same URL-fragment E2EE pattern to code sharing.

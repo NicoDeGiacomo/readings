@@ -223,6 +223,12 @@ a:focus-visible {
   border-color: var(--accent);
 }
 
+.filter-pill.disabled {
+  opacity: 0.35;
+  cursor: not-allowed;
+  pointer-events: none;
+}
+
 .no-results {
   color: var(--text-secondary);
   font-size: 15px;

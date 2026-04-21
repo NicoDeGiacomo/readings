@@ -8,14 +8,18 @@ topic: distributed-systems
 source: https://www.pearson.com/en-us/subject-catalog/p/distributed-systems-concepts-and-design/P200000003187
 ---
 
-## Why read this
+## Why I read this
 
-<!-- TODO: Write 2-3 sentences on why this matters and who should read it. -->
+Mandatory reading for me at university. Extremely useful for going from zero to competent in distributed systems.
 
 ## Key ideas
 
-<!-- TODO: 5-10 bullet points with core concepts in your own words. -->
+- **Foundations**: communication primitives — interprocess messaging, RPC, indirect/event-based communication — are what turn independent nodes into a cooperating system.
+- **Middleware**: higher-level abstractions (objects, services, P2P) hide communication details so applications can treat remote components as if they were local.
+- **System services**: naming, security, and file systems need explicit distributed designs — location transparency, access control, and fault tolerance can't be bolted on after the fact.
+- **Distributed algorithms**: without a global clock, processes must agree on ordering, leadership, and consensus using only messages — the core theoretical problem of DS.
+- **Shared data**: transactions across nodes require coordination (2PC, replication, concurrency control) to preserve consistency despite partial failures.
 
 ## Personal takeaways
 
-<!-- TODO: 1-3 things that changed how you think or work. -->
+Gave me a foundational mental model of how the internet actually works.

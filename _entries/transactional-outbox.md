@@ -8,14 +8,14 @@ topic: microservices
 source: https://microservices.io/patterns/data/transactional-outbox.html
 ---
 
-## Why read this
+## Why I read this
 
-<!-- TODO: Write 2-3 sentences on why this matters and who should read it. -->
+A pattern for turning non-transactional cross-system actions — like writing to a DB and publishing an event — into something that behaves transactionally. Worth reading if you've hit dual-write problems.
 
 ## Key ideas
 
-<!-- TODO: 5-10 bullet points with core concepts in your own words. -->
+- Outbox table + worker: inside the same DB transaction, insert a row describing the action you need to dispatch (event, external call, etc.). A separate continuously-running worker reads those rows and performs the action, retrying until it succeeds.
 
 ## Personal takeaways
 
-<!-- TODO: 1-3 things that changed how you think or work. -->
+Used this pattern many times — in university projects and at work.

@@ -53,6 +53,7 @@ title: Home
 <div class="browse-links">
   <div class="browse-section">
     <h3>Browse by topic</h3>
+    <a href="{{ '/topics/ai-engineering/' | relative_url }}">AI Engineering</a>
     <a href="{{ '/topics/distributed-systems/' | relative_url }}">Distributed Systems</a>
     <a href="{{ '/topics/information-theory/' | relative_url }}">Information Theory</a>
     <a href="{{ '/topics/operating-systems/' | relative_url }}">Operating Systems</a>
@@ -95,10 +96,30 @@ title: Home
       }
     });
     noResults.style.display = visible === 0 ? '' : 'none';
+    updatePillAvailability();
+  }
+
+  function updatePillAvailability() {
+    pills.forEach(function (pill) {
+      var group = pill.dataset.filter;
+      var value = pill.dataset.value;
+      if (value === 'all') {
+        pill.classList.remove('disabled');
+        return;
+      }
+      var otherGroup = group === 'format' ? 'topic' : 'format';
+      var otherActive = active[otherGroup];
+      var hasMatch = Array.prototype.some.call(rows, function (row) {
+        return row.dataset[group] === value &&
+          (otherActive === 'all' || row.dataset[otherGroup] === otherActive);
+      });
+      pill.classList.toggle('disabled', !hasMatch);
+    });
   }
 
   pills.forEach(function (pill) {
     pill.addEventListener('click', function () {
+      if (this.classList.contains('disabled')) return;
       var group = this.dataset.filter;
       active[group] = this.dataset.value;
       document.querySelectorAll('.filter-pill[data-filter="' + group + '"]').forEach(function (p) {
@@ -108,5 +129,7 @@ title: Home
       applyFilters();
     });
   });
+
+  updatePillAvailability();
 })();
 </script>
