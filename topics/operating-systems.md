@@ -12,7 +12,7 @@ permalink: /topics/operating-systems/
   <li>
     <a class="entry-link" href="{{ entry.url | relative_url }}">{{ entry.title }}</a>
     <div class="entry-info">
-      {{ entry.author }}{% if entry.year %}, {{ entry.year }}{% endif %} &middot; {{ entry.format | capitalize }}
+      {{ entry.author }}{% if entry.year %}, {{ entry.year }}{% endif %} &middot; {% include format-label.html format=entry.format %}
     </div>
   </li>
 {% endfor %}

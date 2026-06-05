@@ -3,7 +3,7 @@ layout: entry
 title: "PKCS #1: RSA Cryptography Specifications Version 2.1"
 author: "Jakob Jonsson, Burt Kaliski"
 year: 2003
-format: paper
+format: rfc
 topic: security
 source: https://www.rfc-editor.org/rfc/rfc3447
 ---

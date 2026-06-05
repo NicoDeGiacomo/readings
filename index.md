@@ -13,6 +13,7 @@ title: Home
     <button class="filter-pill" data-filter="format" data-value="paper">Paper</button>
     <button class="filter-pill" data-filter="format" data-value="book">Book</button>
     <button class="filter-pill" data-filter="format" data-value="blog">Blog</button>
+    <button class="filter-pill" data-filter="format" data-value="rfc">RFC</button>
   </div>
   <div class="filter-group">
     <span class="filter-label">Topic</span>
@@ -41,7 +42,7 @@ title: Home
       <td><a href="{{ entry.url | relative_url }}">{{ entry.title }}</a></td>
       <td>{{ entry.author }}</td>
       <td>{{ entry.year }}</td>
-      <td><a href="{{ '/formats/' | append: entry.format | append: 's/' | relative_url }}">{{ entry.format | capitalize }}</a></td>
+      <td><a href="{{ '/formats/' | append: entry.format | append: 's/' | relative_url }}">{% include format-label.html format=entry.format %}</a></td>
       <td><a href="{{ '/topics/' | append: entry.topic | append: '/' | relative_url }}">{{ entry.topic | replace: '-', ' ' | capitalize }}</a></td>
     </tr>
   {% endfor %}
@@ -65,6 +66,7 @@ title: Home
     <a href="{{ '/formats/papers/' | relative_url }}">Papers</a>
     <a href="{{ '/formats/books/' | relative_url }}">Books</a>
     <a href="{{ '/formats/blogs/' | relative_url }}">Blogs</a>
+    <a href="{{ '/formats/rfcs/' | relative_url }}">RFCs</a>
   </div>
 </div>
 
@@ -96,7 +98,21 @@ title: Home
       }
     });
     noResults.style.display = visible === 0 ? '' : 'none';
+    markLastVisible();
     updatePillAvailability();
+  }
+
+  function markLastVisible() {
+    var last = null;
+    rows.forEach(function (row) {
+      row.classList.remove('last-visible');
+      if (row.style.display !== 'none') {
+        last = row;
+      }
+    });
+    if (last) {
+      last.classList.add('last-visible');
+    }
   }
 
   function updatePillAvailability() {
@@ -130,6 +146,7 @@ title: Home
     });
   });
 
+  markLastVisible();
   updatePillAvailability();
 })();
 </script>

@@ -1,0 +1,2 @@
+{%- comment -%}Human-friendly label for a format value (e.g. "rfc" -> "RFC").{%- endcomment -%}
+{%- if include.format == "rfc" -%}RFC{%- else -%}{{ include.format | capitalize }}{%- endif -%}

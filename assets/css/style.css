@@ -262,6 +262,18 @@ a:focus-visible {
   vertical-align: top;
 }
 
+/* Drop the rule under the last row so it doesn't pair with the footer's top
+   divider to read as an empty row. :last-child covers the default view (and
+   degrades gracefully without JS); .last-visible (set by the filter script)
+   covers filtered views where the last visible row isn't last in the DOM.
+   Applies to desktop <td> borders and mobile per-<tr> borders. */
+.entries-table tbody tr:last-child td,
+.entries-table tbody tr:last-child,
+.entries-table tbody tr.last-visible td,
+.entries-table tbody tr.last-visible {
+  border-bottom: none;
+}
+
 .entries-table tbody tr {
   transition: background 0.2s ease;
 }
